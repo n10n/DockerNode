@@ -26,7 +26,7 @@ RUN \
     && echo http://dl-4.alpinelinux.org/alpine/v3.4/main >> /etc/apk/repositories \
     && echo http://dl-4.alpinelinux.org/alpine/v3.4/community>> /etc/apk/repositories \
     && apk add --no-cache mongodb \
-    && apk --update add bash curl git java-cacerts nodejs openjdk8 openssh-client subversion tar xz \
+    && apk --update add bash curl git java-cacerts make nodejs openjdk8 openssh-client subversion tar xz \
     && apk add ca-certificates wget && update-ca-certificates \
     && apk add -u -u python=$PYTHON_VERSION py-pip=$PY_PIP_VERSION \
     && pip install supervisor==$SUPERVISOR_VERSION \
@@ -74,10 +74,10 @@ RUN \
     && apk del --purge tar xz && rm -Rf /var/cache/apk/* \
     && ln -sf $RABBITMQ_HOME /rabbitmq \
 ## Splicious     
-    && cd $W_DIR \
-    && curl -sL https://github.com/synereo/dockernode/raw/single/precompiled.sh -o $W_DIR/precompiled.sh \
-    && chmod 755 $W_DIR/precompiled.sh \
-    && ./precompiled.sh 
+#    && cd $W_DIR \
+#    && curl -sL https://github.com/synereo/dockernode/raw/single/precompiled.sh -o $W_DIR/precompiled.sh \
+#    && chmod 755 $W_DIR/precompiled.sh \
+#    && ./precompiled.sh 
     #&& ./reducesize.sh #TO BE REMOVED
 
 WORKDIR $W_DIR
@@ -85,6 +85,6 @@ WORKDIR $W_DIR
 VOLUME /data/db 
 VOLUME /var/lib/rabbitmq
 
-EXPOSE 9876 9000 27017 5671 5672 15672 15671
+EXPOSE 8567 9678 9876 9000 27017 5671 5672 15672 15671 
 
 ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
