@@ -28,7 +28,7 @@ Use "snode" as a docker image name and use same name in subsequent steps where d
 ## Running standalone node:
 To run the docker image, use docker command below: 
 
-    3. docker run -it -p 80:9000 -p 8080:9876 -h mynodehost --dns 8.8.8.8 --name sn1 -d snode 
+    3. docker run -it -p 80:9000 -p 8080:9876 -p 443:9678 -h mynodehost --dns 8.8.8.8 --name sn1 -d snode 
   
 ## Accessing container:
 
