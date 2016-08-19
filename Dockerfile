@@ -42,7 +42,7 @@ RUN \
     && ln -s ../lib/sbt/bin/sbt /usr/bin/sbt \
     && rm -rf /var/cache/apk/* \
 # Work around https://bugs.alpinelinux.org/issues/4128 for OpenJDK7
-    && apk --upadate add openjdk7 \ 
+    && apk --update add openjdk7 \ 
     && mv /usr/lib/jvm/java-1.7-openjdk/jre/lib/security/cacerts /usr/lib/jvm/java-1.7-openjdk/jre/lib/security/cacerts.org \
     && ln -s /etc/ssl/certs/java/cacerts /usr/lib/jvm/java-1.7-openjdk/jre/lib/security/cacerts \
 
